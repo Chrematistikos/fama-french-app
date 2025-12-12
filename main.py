@@ -123,11 +123,10 @@ def main():
         results_df, stats_summary = analyze_portfolio(st.session_state.selected, st.session_state.weights)
         st.dataframe(results_df.style.format("{:.4f}"))
         st.markdown("""
-        **Légende des variables :**
-        - **const** : intercept (α) du modèle, rendement anormal du portefeuille  
-        - **Mkt-RF** : rendement du marché excédant le taux sans risque  
-        - **SMB** : prime taille (Small Minus Big)  
-        - **HML** : prime style (High Minus Low, value vs growth)
+        **Légende :**    
+        - Mkt-RF : $Mkt\text{-}RF_t = R_{m,t} - R_{f,t}$  
+        - SMB : $SMB_t = R_{\text{small cap}, t} - R_{\text{big cap}, t}$  
+        - HML : $HML_t = R_{\text{high B/M}, t} - R_{\text{low B/M}, t}$
         """)
 
         st.write("### Statistiques globales du modèle")
