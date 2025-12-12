@@ -127,7 +127,7 @@ def main():
         - $Mkt\text{-}RF_t = R_{m,t} - R_{f,t}$  
         - $SMB_t = R_{\text{small cap}, t} - R_{\text{big cap}, t}$  
         - $HML_t = R_{\text{high B/M}, t} - R_{\text{low B/M}, t}$  
-          avec $B/M = \frac{\text{valeur comptable}}{\text{capitalisation boursière}}$
+        avec $B/M = \frac{\text{valeur comptable}}{\text{capitalisation boursière}}$
         """)
 
         st.write("### Statistiques globales du modèle")
