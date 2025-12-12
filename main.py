@@ -122,12 +122,12 @@ def main():
         st.write("Résultats de l'analyse pour :", st.session_state.selected)
         results_df, stats_summary = analyze_portfolio(st.session_state.selected, st.session_state.weights)
         st.dataframe(results_df.style.format("{:.4f}"))
-        st.markdown("""
-        **Légende :**    
+        st.markdown(r"""
+        **Légende :**  
         - $Mkt\text{-}RF_t = R_{m,t} - R_{f,t}$  
         - $SMB_t = R_{\text{small cap}, t} - R_{\text{big cap}, t}$  
-        - $HML_t = R_{\text{high B/M}, t} - R_{\text{low B/M}, t}$  
-        avec $B/M = \frac{\text{valeur comptable}}{\text{capitalisation boursière}}$
+        - $HML_t = R_{\text{high B/M}, t} - R_{\text{low B/M}, t}$, \quad
+          B/M = \frac{\text{Book Value}}{\text{Market Value}}
         """)
 
         st.write("### Statistiques globales du modèle")
