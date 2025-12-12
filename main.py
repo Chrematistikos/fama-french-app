@@ -6,16 +6,10 @@ import statsmodels.api as sm
 import requests
 from io import StringIO
 from datetime import datetime
-from streamlit.runtime.scriptrunner import RerunException, get_script_run_ctx
 
 
 PASSWORD = "monmotdepasse"
 
-def rerun():
-    ctx = get_script_run_ctx()
-    if ctx is None:
-        raise RuntimeError("Can't rerun outside of a Streamlit script.")
-    raise RerunException(ctx)
 
 def login():
     pwd = st.text_input("Mot de passe", type="password")
@@ -115,7 +109,6 @@ def main():
             st.session_state.selected = selected
             st.session_state.weights = weights
             st.session_state.step = 2
-            rerun()
 
     elif st.session_state.step == 2:
         st.write("Résultats de l'analyse pour :", st.session_state.selected)
@@ -131,7 +124,6 @@ def main():
 
         if st.button("Retour"):
             st.session_state.step = 1
-            rerun()
 
 if __name__ == "__main__":
     main()
