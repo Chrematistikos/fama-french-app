@@ -124,9 +124,10 @@ def main():
         st.dataframe(results_df.style.format("{:.4f}"))
         st.markdown("""
         **Légende :**    
-        - Mkt-RF : $Mkt\text{-}RF_t = R_{m,t} - R_{f,t}$  
-        - SMB : $SMB_t = R_{\text{small cap}, t} - R_{\text{big cap}, t}$  
-        - HML : $HML_t = R_{\text{high B/M}, t} - R_{\text{low B/M}, t}$
+        - $Mkt\text{-}RF_t = R_{m,t} - R_{f,t}$  
+        - $SMB_t = R_{\text{small cap}, t} - R_{\text{big cap}, t}$  
+        - $HML_t = R_{\text{high B/M}, t} - R_{\text{low B/M}, t}$  
+          avec $B/M = \frac{\text{valeur comptable}}{\text{capitalisation boursière}}$
         """)
 
         st.write("### Statistiques globales du modèle")
