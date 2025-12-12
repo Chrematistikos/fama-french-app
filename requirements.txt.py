@@ -5,4 +5,3 @@ matplotlib
 yfinance
 statsmodels
 requests
-
