@@ -24,10 +24,18 @@ def load_ff_factors():
     url = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors.CSV"
     ff_data = pd.read_csv(url, skiprows=3)
     ff_data = ff_data.rename(columns={ff_data.columns[0]: 'Date'})
-    ff_data = ff_data[ff_data['Date'].str.len() == 6]  # garder uniquement AAAAMM
-    ff_data['Date'] = pd.to_datetime(ff_data['Date'], format='%Y%m')
+
+    # Keep only rows where the first column is 6 characters (YYYYMM)
+    ff_data = ff_data[ff_data['Date'].str.len() == 6]
+
+    # Convert to datetime, coerce errors
+    ff_data['Date'] = pd.to_datetime(ff_data['Date'], format='%Y%m', errors='coerce')
+
+    # Drop any rows that could not be converted
+    ff_data = ff_data.dropna(subset=['Date'])
+
     ff_data = ff_data.set_index('Date')
-    ff_data = ff_data.astype(float) / 100  # en décimal
+    ff_data = ff_data.astype(float) / 100  # Convert to decimals
     return ff_data
 
 def analyze_portfolio(tickers, weights):
