@@ -122,6 +122,13 @@ def main():
         st.write("Résultats de l'analyse pour :", st.session_state.selected)
         results_df, stats_summary = analyze_portfolio(st.session_state.selected, st.session_state.weights)
         st.dataframe(results_df.style.format("{:.4f}"))
+        st.markdown("""
+        **Légende des variables :**
+        - **const** : intercept (α) du modèle, rendement anormal du portefeuille  
+        - **Mkt-RF** : rendement du marché excédant le taux sans risque  
+        - **SMB** : prime taille (Small Minus Big)  
+        - **HML** : prime style (High Minus Low, value vs growth)
+        """)
 
         st.write("### Statistiques globales du modèle")
         for k, v in stats_summary.items():
