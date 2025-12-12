@@ -27,7 +27,8 @@ def login():
 
 
 def load_ff_factors():
-    ff_data = pd.read_csv('F-F_Research_Data_Factors.CSV', skiprows=3)
+    url = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors.CSV"
+    ff_data = pd.read_csv(url, skiprows=3)
     ff_data = ff_data.rename(columns={ff_data.columns[0]: 'Date'})
     ff_data = ff_data[ff_data['Date'].str.len() == 6]  # garder uniquement AAAAMM
     ff_data['Date'] = pd.to_datetime(ff_data['Date'], format='%Y%m')
