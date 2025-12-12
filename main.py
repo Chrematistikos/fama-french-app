@@ -25,7 +25,6 @@ def login():
         st.error("Mot de passe incorrect")
     return False
 
-ff_url = "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/F-F_Research_Data_Factors.CSV"
 
 def load_ff_factors():
     ff_data = pd.read_csv('F-F_Research_Data_Factors.CSV', skiprows=3)
@@ -77,7 +76,32 @@ def main():
 
     st.title("Analyse Portefeuille Fama-French")
 
-    tickers_list = ['AAPL', 'MSFT', 'XOM', 'JNJ', 'JPM', 'GOOGL', 'AMZN', 'TSLA', 'META', 'NVDA']
+    tickers_list = [
+        # Technologie
+        'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'NVDA', 'META', 'TSLA', 'ORCL', 'CRM', 'ADBE',
+        # Finance
+        'JPM', 'BAC', 'WFC', 'GS', 'MS', 'AXP',
+        # Santé
+        'JNJ', 'PFE', 'MRK', 'UNH', 'ABBV', 'LLY',
+        # Consommation discrétionnaire
+        'HD', 'MCD', 'NKE', 'SBUX', 'LOW', 'TGT',
+        # Consommation de base
+        'KO', 'PEP', 'PG', 'WMT', 'COST',
+        # Énergie
+        'XOM', 'CVX', 'COP', 'SLB',
+        # Industrie
+        'BA', 'CAT', 'GE', 'UNP', 'DE',
+        # Matériaux
+        'LIN', 'NEM', 'DD',
+        # Services de communication
+        'T', 'VZ', 'DIS', 'CMCSA',
+        # Immobilier
+        'PLD', 'AMT', 'O',
+        # Utilitaires
+        'NEE', 'DUK', 'SO',
+        # ETF indicatifs (pour plus de couverture du marché)
+        'SPY', 'QQQ', 'DIA', 'IWM', 'XLK', 'XLF', 'XLV', 'XLE'
+    ]
 
     if 'step' not in st.session_state:
         st.session_state.step = 1
